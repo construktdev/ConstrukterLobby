@@ -1,0 +1,11 @@
+name: ConstrukterLobby
+version: '${project.version}'
+main: de.construkter.construkterlobby.ConstrukterLobby
+api-version: '1.20'
+
+commands:
+  coins:
+    description: Schaue nach, wie viele Coins du besitzt!
+
+  addpremium:
+    description: null.
