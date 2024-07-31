@@ -1,5 +1,6 @@
 package de.construkter.construkterlobby.events;
 
+import de.construkter.construkterlobby.manager.Prefix;
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,7 +19,7 @@ public class DisableDefaultEvents implements Listener {
     public void onBlockBreak(BlockBreakEvent event) {
         if (!event.getPlayer().hasPermission("*")){
             event.setCancelled(true);
-            event.getPlayer().sendMessage(ChatColor.RED + "You don't have permission to break blocks here.");
+            event.getPlayer().sendMessage(Prefix.errorPrefix() +  ChatColor.RED + "You don't have permission to break blocks here.");
         }
     }
 

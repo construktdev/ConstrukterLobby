@@ -8,4 +8,16 @@ commands:
     description: Schaue nach, wie viele Coins du besitzt!
 
   addpremium:
-    description: null.
+    description: Admin only, Gebe einem Nutzer den Premium Rang
+
+  premium:
+    description: Überprüfe ob du Premium hast
+
+  addcoins:
+    description: Gebe einem Spieler Coins
+
+  setcoins:
+    description: Setze die Coins Anzahl eines bestimmten Spielers
+
+  hilfe:
+    description: Zeigt dir eine Liste mit allen Commands

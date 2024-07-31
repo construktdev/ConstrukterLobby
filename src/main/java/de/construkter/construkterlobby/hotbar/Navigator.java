@@ -1,5 +1,6 @@
 package de.construkter.construkterlobby.hotbar;
 
+import de.construkter.construkterlobby.manager.Prefix;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -60,16 +61,16 @@ public class Navigator implements Listener {
                     out.writeUTF("jump");
 
                     player.sendPluginMessage(Objects.requireNonNull(Bukkit.getPluginManager().getPlugin("ConstrukterLobby")), "BungeeCord", b.toByteArray());
-                    player.sendMessage(ChatColor.GREEN + "Du wurdest erfolgreich mit 'jump' verbunden!");
+                    player.sendMessage(Prefix.PluginPrefix() + ChatColor.GREEN + "Du wurdest erfolgreich mit 'jump' verbunden!");
                 } catch (Exception e) {
-                    player.sendMessage(ChatColor.RED + "Es gab einen Fehler beim Verbinden mit 'jump'.");
+                    player.sendMessage(Prefix.errorPrefix() + ChatColor.RED + "Es gab einen Fehler beim Verbinden mit 'jump'.");
                     e.printStackTrace();
                 }
                 player.closeInventory();
             } else if (event.getCurrentItem().getType() == Material.RED_BED) {
                 Player player = (Player) event.getWhoClicked();
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"tp " + player.getName() + " -1.49 90.00 13.49 771.89 -3.75");
-                player.sendMessage(ChatColor.RED + "Kein Bedwars Server, auf den du beitreten kannst gefunden!");
+                player.sendMessage(Prefix.errorPrefix() +  ChatColor.RED + "Kein Bedwars Server, auf den du beitreten kannst gefunden!");
                 player.closeInventory();
             } else if (event.getCurrentItem().getType() == Material.DIAMOND_SWORD) {
                 Player player = (Player) event.getWhoClicked();
@@ -80,11 +81,16 @@ public class Navigator implements Listener {
                     out.writeUTF("varo");
 
                     player.sendPluginMessage(Objects.requireNonNull(Bukkit.getPluginManager().getPlugin("ConstrukterLobby")), "BungeeCord", b.toByteArray());
-                    player.sendMessage(ChatColor.GREEN + "Du wurdest erfolgreich mit 'varo' verbunden!");
+                    player.sendMessage(Prefix.PluginPrefix() + ChatColor.GREEN + "Du wurdest erfolgreich mit 'varo' verbunden!");
                 } catch (Exception e) {
-                    player.sendMessage(ChatColor.RED + "Es gab einen Fehler beim Verbinden mit 'varo'.");
+                    player.sendMessage(Prefix.errorPrefix() + ChatColor.RED + "Es gab einen Fehler beim Verbinden mit 'varo'.");
                     e.printStackTrace();
                 }
+                player.closeInventory();
+            } else if (event.getCurrentItem().getType() == Material.GRASS_BLOCK) {
+                Player player = (Player) event.getWhoClicked();
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"tp " + player.getName() + " -1.49 90.00 13.49 771.89 -3.75");
+                player.sendMessage(Prefix.errorPrefix() +  ChatColor.RED + "Kein Skywars Server, auf den du beitreten kannst gefunden!");
                 player.closeInventory();
             }
         }
@@ -133,7 +139,6 @@ public class Navigator implements Listener {
                 varo.setItemMeta(varoMeta);
             }
 
-            // Place the grass block in the middle of the menu (slot 4, index 3)
             menu.setItem(8, sb);
             menu.setItem(4, grassBlock);
             menu.setItem(0, redBed);

@@ -1,5 +1,6 @@
 package de.construkter.construkterlobby.commands;
 
+import de.construkter.construkterlobby.manager.Prefix;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -28,11 +29,11 @@ public class GetCoinsCommand implements CommandExecutor {
             }
         } catch (IOException e) {
             e.printStackTrace();
-            commandSender.sendMessage(ChatColor.DARK_RED + "[ERR] Es ist ein Fehler aufgteretn!");
+            commandSender.sendMessage(Prefix.errorPrefix() + ChatColor.RED + "Es ist ein Fehler aufgteretn!");
         }
         String name = commandSender.getName();
         int playerCoions = coinMap.get(name);
-        commandSender.sendMessage(ChatColor.DARK_AQUA + "Du hast " + ChatColor.GOLD + "" + ChatColor.BOLD + playerCoions + ChatColor.DARK_AQUA + " Coins gesammelt!");
+        commandSender.sendMessage(Prefix.PluginPrefix() + ChatColor.DARK_AQUA + "Du hast " + ChatColor.GOLD + "" + ChatColor.BOLD + playerCoions + ChatColor.DARK_AQUA + " Coins gesammelt!");
         return true;
     }
 }
